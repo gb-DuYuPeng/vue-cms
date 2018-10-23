@@ -10,11 +10,19 @@
 		<!-- 内容区域 -->
 		<div class="content" v-html='newsInfo.content'>内容</div>
 		<!-- 评论区 -->
+		<!-- 3.调用子组件 -->
+		<comment-box :id='this.id'></comment-box>
 	</div>
 </template>
 <script type="text/javascript">
+	//1.引入
+	import comment from '../subcomponents/comment.vue'
 	export default {
         name: "newsInfo",
+        components:{
+        	//2.注册组件名
+        	commentBox:comment,
+        },
         data(){
         	return {
         		id:'',
@@ -39,19 +47,22 @@
         }
     }
 </script>
-<style scoped>
+<style lang="scss">
 	.newsInfo-container {
 		padding: 0 4px;
-	}
-	.newsInfo-container .title {
-		color: red;
-		margin: 15px 0;
-		text-align: center;
-	}
-	.newsInfo-container .subTitle {
-		display: flex;
-		justify-content: space-between;
-		font-size: 14px;
-		color: #226aff;
+		.title {
+			color: red;
+			margin: 15px 0;
+			text-align: center;
+		}
+		.subTitle {
+			display: flex;
+			justify-content: space-between;
+			font-size: 14px;
+			color: #226aff;
+		}
+		.content img{
+			width: 100%;
+		}
 	}
 </style>

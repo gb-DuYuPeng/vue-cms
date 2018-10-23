@@ -12,6 +12,7 @@ import Shopcar from "./components/tabbar/shopcar.vue"
 import Search from "./components/tabbar/search.vue"
 import NewsList from "./components/news/newsList.vue"
 import NewsInfo from "./components/news/newsInfo.vue"
+import PhotoList from "./components/photos/photoList.vue"
 //4.创建路由对象
 let router = new VueRouter({
 	//设置路由高亮显示
@@ -24,6 +25,7 @@ let router = new VueRouter({
 		{ path:'/search',component:Search },
 		{ path:'/news/newsList',component:NewsList },
 		{ path:'/news/newsInfo/:id',component:NewsInfo },
+		{ path:'/photos/photoList',component:PhotoList },
 	]
 })
 //最后暴露路由对象
