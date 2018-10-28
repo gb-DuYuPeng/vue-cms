@@ -1,7 +1,11 @@
 <template>
     <div class="app-container">
     	<!-- header -->
-		<mt-header fixed title="首页"></mt-header>
+		<mt-header fixed title="vue项目">
+			<span slot="left" @click = "goback" v-show='flag'>
+				<mt-button icon="back">返回</mt-button>
+			</span>
+		</mt-header>
 
     	<!-- router路由区域 -->
     	<transition>
@@ -19,7 +23,7 @@
 				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-item-my " to = '/shopcar'>
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">9</span></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge"> {{$store.getters.getAllCount}} </span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item-my  " to = '/search'>
@@ -32,7 +36,31 @@
 
 <script>
     export default {
-        name: "App"
+        name: "App",
+        methods:{
+        	//点击后退
+        	goback(){
+        		this.$router.go(-1)
+        	}
+        },
+        data(){
+        	return {
+        		flag:false
+        	}
+        },
+        //在页面初始化的时候判断
+        created(){
+        	this.flag = this.$route.path === '/home' ? false : true
+        },
+        watch:{
+        	'$route.path':function (newVal) {
+        		if (newVal ==='/home') {
+        			this.flag  = false;
+        		} else {
+        			this.flag = true
+        		}
+        	}
+        }
     }
 </script>
 

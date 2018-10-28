@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --open --hot --port 8080"
+    "dev": "webpack-dev-server --open --hot --port 3636"
   },
   "keywords": [],
   "author": "",
@@ -37,7 +37,9 @@
     "mint-ui": "^2.2.13",
     "moment": "^2.22.2",
     "vue": "^2.5.17",
+    "vue-preview": "^1.1.3",
     "vue-resource": "^1.5.1",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   }
 }

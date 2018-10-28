@@ -39,10 +39,7 @@
 				console.log(this.id);
 				this.$http.get(`api/getcomments/${this.id}?pageindex=${this.pageindex}`).then( result => {
 					if (result.body.status === 0) {
-						// this.comments = result.body.message;
-						// 每次点击点击“加载更多”数组拼接
 						this.comments = this.comments.concat(result.body.message);
-						// console.log(this.comments)
 					}
 				})
 			},
@@ -53,16 +50,11 @@
 			},
 			//3.点击添加评论信息
 			postComment(){
-				//校验
 				if (this.msg.trim().length ===0 ) {
 					return Toast('评论内容不能为空')
 				}
-				//参数1：请求url地址
-				//参数2：提交给服务器的数据对象
-				//参数3：定义提交方式，以表单数据的格式 {emulateJSON：true}
 				this.$http.post(`api/postcomment/${this.id}`,{content:this.msg.trim()}).then( result => {
 					if (result.body.status === 0 ) {
-						// console.log('提交成功')
 						//拼接一个评论对象
 						let cmt = {
 							add_time:Date.now(),
@@ -80,7 +72,7 @@
 <style scoped lang="scss">
 	.cmt-container {
 		h3 {
-			font-size: 14px;
+			font-size: 18px;
 		}
 		textarea {
 			margin:0;
